@@ -1,7 +1,8 @@
 const express = require('express')
 
 const app = express()
-const https = require('httpolyglot')
+const http = // require('httpolyglot')
+require('http')
 const fs = require('fs')
 const mediasoup = require('mediasoup')
 const config = require('./config')
@@ -10,17 +11,17 @@ const Room = require('./Room')
 const Peer = require('./Peer')
 
 const options = {
-  key: fs.readFileSync(path.join(__dirname, config.sslKey), 'utf-8'),
-  cert: fs.readFileSync(path.join(__dirname, config.sslCrt), 'utf-8')
+//  key: fs.readFileSync(path.join(__dirname, config.sslKey), 'utf-8'),
+//  cert: fs.readFileSync(path.join(__dirname, config.sslCrt), 'utf-8')
 }
 
-const httpsServer = https.createServer(options, app)
+const httpsServer = http.createServer(options, app)
 const io = require('socket.io')(httpsServer)
 
 app.use(express.static(path.join(__dirname, '..', 'public')))
 
 httpsServer.listen(config.listenPort, () => {
-  console.log('Listening on https://' + config.listenIp + ':' + config.listenPort)
+  console.log('Listening on http://' + config.listenIp + ':' + config.listenPort)
 })
 
 // all mediasoup workers

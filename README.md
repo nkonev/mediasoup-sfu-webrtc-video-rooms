@@ -21,3 +21,16 @@ This project is featured on the [mediasoup examples page](https://mediasoup.org/
 notes : Best to run the project on a linux system as the mediasoup installation could have issues by installing on windows. If you have a windows system consider installing WSL to be able to run it.
 
 [installing wsl on windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+
+# Installation
+```bash
+sudo dnf install python-pip-wheel
+sudo dnf groupinstall "Development Tools" "Development Libraries"
+sudo dnf install make automake gcc gcc-c++ kernel-devel
+```
+then
+```bash
+npm install
+```
+
+In order to fix `navigator.mediaDevices is undefined`  open `http://127.0.0.1:3016/` instead of `http://0.0.0.0:3016`
